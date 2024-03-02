@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/kenney_platformerpack/PNG/Enemies/saw.png" type="Texture" id=1]
+[ext_resource path="res://scenes/FallingSaw.gd" type="Script" id=2]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 37.0
+height = 22.0
+
+[node name="FallingSaw" type="RigidBody2D"]
+contacts_reported = 1
+contact_monitor = true
+script = ExtResource( 2 )
+
+[node name="Saw" type="Sprite" parent="."]
+position = Vector2( 0.999999, 1 )
+scale = Vector2( 0.757813, 0.804688 )
+texture = ExtResource( 1 )
+flip_v = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[connection signal="body_entered" from="." to="." method="_on_FallingSaw_body_entered"]
